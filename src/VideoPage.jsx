@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useMuted } from './useMuted';
 
 const PROJECTS = [
-  { id: "p1", title: "SONIQ - PRIVACY LAYER FOR LIVE AUDIO", status: "ONGOING", tech: "Java, Spring Boot, K8s", desc: "Soniq is an edge-computing React SDK that redacts PII (Personally Identifiable Information) from live audio streams directly in the user's device. By using high-performance WASM inference, Soniq ensures that sensitive data—like IBANs, names, and credit card numbers never reaches any servers or third-party AI providers." },
-  { id: "p2", title: "GPU GPU COMPUTING", status: "COMPLETE", tech: "C++, CUDA", desc: "High-performance parallel computing simulations and exercise sessions." },
-  { id: "p3", title: "AI EMAIL CLASSIFIER", status: "COMPLETE", tech: "Python, TensorFlow", desc: "Undergraduate thesis project using AI for automated spam email detection and categorization." },
-  { id: "p4", title: "PERSONA 3 PORTFOLIO", status: "COMPLETE", tech: "React, Vite, CSS Grid", desc: "A premium, high-fidelity portfolio inspired by Persona 3 aesthetics." },
+  { id: "p1", title: "SONIQ - PRIVACY LAYER FOR LIVE AUDIO", status: "ONGOING", tech: "WASM, Rust, Python", desc: "Soniq is an edge-computing React SDK that redacts PII (Personally Identifiable Information) from live audio streams directly in the user's device. By using high-performance WASM inference, Soniq ensures that sensitive data—like IBANs, names, and credit card numbers never reaches any servers or third-party AI providers." },
+  { id: "p2", title: "WAVELET TRANSFORM", status: "COMPLETE", tech: "C++, CUDA", desc: "Implemented a fully GPU-accelerated wavelet transform and a simple multi-resolution representation (MRA) in the style of JPEG2000. Developed an efficient 1D/2D/3D GPU implementation." },
+  { id: "p3", title: "AI EMAIL CLASSIFIER", status: "COMPLETE", tech: "Python", desc: "Undergraduate thesis project using AI for automated spam email detection and categorization." },
+  { id: "p4", title: "PERSONA 3 PORTFOLIO", status: "COMPLETE", tech: "React", desc: "A premium, high-fidelity portfolio inspired by Persona 3 aesthetics." },
 
 ];
 
