@@ -35,7 +35,7 @@ const REVEAL_CONTENT = [
       "Facilization: Engineered Core Banking Microservices",
       "SDA: Software Development Instructor for Full Stack",
     ],
-    lower: ["Domain: FinTech Infrastructure", "& Systems Engineering"],
+    lower: ["Domain: Full Stack Development", "Systems Engineering"],
   },
 ];
 
