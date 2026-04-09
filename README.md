@@ -1,6 +1,8 @@
 # 🌑 Gledis' Persona 3 Portfolio
 
-A premium, interactive web portfolio designed with the high-fidelity aesthetic of **Persona 3 Reload**. This project serves as a showcase of my journey as a Software Engineer, featuring immersive UI/UX, synchronized audio management, and a dynamic "Side Projects" dashboard.
+Hi, I'm **Gledis Lami**! I'm an Information Engineering Master's student at **TU Munich (TUM)**, specializing in high-performance computing and robust backend architecture. With a background in building **Core Banking Systems** and a deep passion for **GPU-accelerated computing (CUDA)**, I focus on creating scalable, efficient, and privacy-conscious software. 
+
+Currently, I'm architecting **SONIQ**—a WASM-based SDK for real-time audio privacy—while serving as a **Lead Teaching Assistant** for GPU Computing at TUM.
 
 ---
 
