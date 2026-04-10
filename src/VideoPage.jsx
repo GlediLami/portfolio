@@ -7,6 +7,7 @@ const PROJECTS = [
   { id: "p2", title: "WAVELET TRANSFORM", status: "COMPLETE", tech: "C++, CUDA", desc: "Implemented a fully GPU-accelerated wavelet transform and a simple multi-resolution representation (MRA) in the style of JPEG2000. Developed an efficient 1D/2D/3D GPU implementation." },
   { id: "p3", title: "AI EMAIL CLASSIFIER", status: "COMPLETE", tech: "Python", desc: "Undergraduate thesis project using AI for automated spam email detection and categorization." },
   { id: "p4", title: "PERSONA 3 PORTFOLIO", status: "COMPLETE", tech: "React", desc: "A premium, high-fidelity portfolio inspired by Persona 3 aesthetics." },
+  { id: "p5", title: "GOOD 2 GO", status: "ONGOING", tech: "Flutter, React", desc: "A food waste management mobile app for the Albanian market, where people can find good deals on food that would be thrown away." },
 
 ];
 

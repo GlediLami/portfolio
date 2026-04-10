@@ -24,9 +24,6 @@ export function useMuted() {
       videoRefs.current.add(el);
       // Synchronize immediately
       el.muted = globalMuted;
-    } else {
-      // In case we want to clean up, but Set doesn't easily store which is which
-      // Usually React keeps the set clean if we handle it carefully
     }
   }, []);
 
