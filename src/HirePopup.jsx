@@ -2,27 +2,55 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-const DELAY_MS = 60 * 1000;
+const DELAY_MS = 45 * 1000;
+const FOLLOW_UP_MS = 10 * 1000;
 const SEEN_KEY = "hirePopupSeen";
 
+const STAGES = {
+  first: {
+    lines: ["You seem to enjoy my Portfolio.", "You would enjoy having me as a colleague more."],
+    choices: ["LET'S TALK", "MAYBE LATER"],
+  },
+  followUp: {
+    lines: ["Are you sure you don't want to talk?"],
+    choices: ["LET'S TALK", "I'M SURE"],
+  },
+};
+
 export default function HirePopup() {
-  const [open, setOpen] = useState(false);
+  const [stage, setStage] = useState(null); // null | "first" | "followUp"
   const [choice, setChoice] = useState(0);
   const navigate = useNavigate();
+  const open = stage !== null;
 
   useEffect(() => {
     if (sessionStorage.getItem(SEEN_KEY)) return;
     const t = setTimeout(() => {
       sessionStorage.setItem(SEEN_KEY, "1");
-      setOpen(true);
+      setStage("first");
     }, DELAY_MS);
     return () => clearTimeout(t);
   }, []);
 
+  // "Maybe later" on the first popup brings back a follow-up 10s later
+  const [followUpPending, setFollowUpPending] = useState(false);
+  useEffect(() => {
+    if (!followUpPending) return;
+    const t = setTimeout(() => {
+      setFollowUpPending(false);
+      setChoice(0);
+      setStage("followUp");
+    }, FOLLOW_UP_MS);
+    return () => clearTimeout(t);
+  }, [followUpPending]);
+
   const pick = (idx) => {
-    setOpen(false);
     if (idx === 0) navigate("/socials");
+    else if (stage === "first") setFollowUpPending(true);
+    setStage(null);
   };
+
+  const close = () => setStage(null);
 
   useEffect(() => {
     if (!open) return;
@@ -33,11 +61,11 @@ export default function HirePopup() {
       if (e.key === "ArrowLeft" || e.key === "ArrowUp") setChoice(0);
       if (e.key === "ArrowRight" || e.key === "ArrowDown") setChoice(1);
       if (e.key === "Enter") pick(choice);
-      if (e.key === "Escape" || e.key === "Backspace") setOpen(false);
+      if (e.key === "Escape" || e.key === "Backspace") close();
     };
     window.addEventListener("keydown", onKey, true);
     return () => window.removeEventListener("keydown", onKey, true);
-  }, [open, choice]);
+  }, [open, choice, stage]);
 
   return (
     <>
@@ -142,11 +170,12 @@ export default function HirePopup() {
       <AnimatePresence>
         {open && (
           <motion.div
+            key={stage}
             className="hp-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
+            onClick={close}
           >
             <motion.div
               initial={{ x: 400, opacity: 0 }}
@@ -158,10 +187,11 @@ export default function HirePopup() {
               <div className="hp-box">
               <div className="hp-tag">GLEDIS</div>
               <div className="hp-inner">
-                <div className="hp-line">You seem to enjoy my Portfolio.</div>
-                <div className="hp-line hp-red">You would enjoy having me as a colleague more.</div>
+                {STAGES[stage].lines.map((line, i) => (
+                  <div key={line} className={`hp-line ${i > 0 ? "hp-red" : ""}`}>{line}</div>
+                ))}
                 <div className="hp-choices">
-                  {["LET'S TALK", "MAYBE LATER"].map((label, i) => (
+                  {STAGES[stage].choices.map((label, i) => (
                     <button
                       key={label}
                       className={`hp-choice ${choice === i ? "active" : ""}`}
