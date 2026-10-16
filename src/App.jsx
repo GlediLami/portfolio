@@ -11,6 +11,7 @@ import ResumePage from './ResumePage'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
 import AboutMe from './AboutMe'
+import HirePopup from './HirePopup'
 import { useMuted } from './useMuted'
 import './App.css'
 
@@ -81,5 +82,10 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  return <AnimatedRoutes />
+  return (
+    <>
+      <AnimatedRoutes />
+      <HirePopup />
+    </>
+  )
 }
